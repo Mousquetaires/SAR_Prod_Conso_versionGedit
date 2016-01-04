@@ -27,11 +27,13 @@ public class ThreadTampon extends Thread{
 			prodTemp = "producteur";			
 			
 			 if(str.equals(prodTemp)){
-				 out.println("type producteur reçu !");				 
-				 receptionP();
+				System.out.println("le type du client est : Producteur");
+				out.println("type producteur reçu !");				 
+				receptionP();
 			 }else{
-				 out.println("type consommateur reçu !");
-				 receptionC();
+				out.println("type consommateur reçu !");
+				System.out.println("le type du client est : Consommateur");
+				receptionC();
 			 }			
 		}catch(IOException e){
 			e.getMessage();
@@ -41,27 +43,25 @@ public class ThreadTampon extends Thread{
 				in.close();
 				out.close();
 				socket.close();
+				System.out.println("Fin de la connexion avec "+socket.getInetAddress());
 			} catch (IOException e) {
 				e.getMessage();
-				System.out.println("Fin de la connexion avec "+socket.getInetAddress());
 			}
 		}
 	}	
 
-	public void envoyerA(String dest, String msg){
+	public void envoyerA(String msg){
 	out.println(msg);
 	}
    
 	public void receptionP() {
 	String msg = "";
 		try {
-			System.out.println("dans reception P");
 			msg = in.readLine();
 	    		tampon.surReceptionDeP(prod, msg,this);
 		} catch (IOException e) {
 			e.getMessage();
 		}
-
 	}
 	public void receptionC() {
 	String msg = "";

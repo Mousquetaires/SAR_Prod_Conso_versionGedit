@@ -5,7 +5,7 @@ public class ConsommateurS {
     public String id;
     public String mess;
     ConsommateurR cons;
-    String req="REQ";
+    static String req="REFUS";
     
     
 
@@ -15,16 +15,34 @@ public class ConsommateurS {
 
     public void demande() {
     	cons.envoyerA(req);
-    	
     }
 
     public static void surReceptionDe(String message) {
-    	if(message!="REFUS"){
-    		System.out.println(message);
+    	if(message.equals(req)){
+		for(int i=0;i<50;i++){
+		System.out.print("-");
+	}
+	System.out.println("-");
+	System.out.println("Le serveur est vide");
+	for(int i=0;i<50;i++){
+		System.out.print("-");
+	}
+	System.out.println("-");	
     	}else{
-    		System.out.println("Pas de message");
+		consommer(message);
     	}
-    		
+    }
+    public static void consommer(String message){
+	System.out.println("Le message reçu est: ");  
+	for(int i=0;i<50;i++){
+		System.out.print("-");
+	}
+	System.out.println("-");
+	System.out.println(message);	
+	for(int i=0;i<50;i++){
+		System.out.print("-");
+	}
+	System.out.println("-");
     }
 
 }

@@ -18,13 +18,20 @@ public class Producteur {
 		pro= new ProducteurS(proR);
 		
 		while(true){
-			System.out.println("Bienvenue dans le Producteur \nVeuillez appuyer sur Entrer pour savoir l'état du Tampon ");
+			System.out.println("Bienvenue dans le Producteur");
+			for(int i=0;i<50;i++){
+				System.out.print("-");
+				}
+			System.out.println("-");
+			System.out.println("Veuillez appuyer sur Entrer pour savoir l'état du Tampon ");
 			String temp=saisirMessage();
 			pro.demande(temp);
-			//System.out.println("Entre dans saisir message");
-			//System.out.println("Je suis dans autorisation");
 			if(pro.autorisation){
-				System.out.println("Veuillez entrer votre message a envoyer au Tampon");
+				System.out.println("Veuillez entrer votre message à envoyer au Tampon");
+				for(int i=0;i<50;i++){
+				System.out.print("-");
+				}
+				System.out.println("-");
 				String tem2=saisirMessage();
 				pro.produire(tem2);
 			}						

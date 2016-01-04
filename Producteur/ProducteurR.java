@@ -16,7 +16,7 @@ public class ProducteurR {
     public boolean demander=false;
     
     public ProducteurR(){
-    	String desti="192.168.1.198";
+    	String desti="192.168.0.15";
     	try {
 			dest= InetAddress.getByName(desti)	;
 		} catch (UnknownHostException e) {
@@ -48,7 +48,6 @@ public class ProducteurR {
     		fermeture();
     		
     	}else{
-    		System.out.println("dans envoyer a de else");
     		connexion();
     		out.println(message);
     		receptionR();
@@ -57,9 +56,7 @@ public class ProducteurR {
     }
     public void receptionR() {
     	try {
-	
 		String rep=in.readLine();
-		System.out.println(rep);
 		ProducteurS.surReceptionDe(rep);
 		demander=true;
 	} catch (IOException e) {
@@ -77,6 +74,15 @@ public class ProducteurR {
 	    		out.close();
 	    		socket.close();
 			demander=false;
+			for(int i=0;i<50;i++){
+				System.out.print("-");
+			}
+			System.out.println("-");
+			System.out.println("Déconnection du serveur");
+			for(int i=0;i<50;i++){
+				System.out.print("-");
+			}
+			System.out.println("-");
     		}catch(Exception e){}
     	}
     }

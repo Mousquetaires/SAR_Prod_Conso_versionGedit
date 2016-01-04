@@ -13,9 +13,7 @@ public class ServeurTampon {
     	Tampon t=new Tampon();
     	try{
 		socketServeur = new ServerSocket(port);			
-        	System.out.println("Le serveur est pret a l'écoute sur l'adress : "+socketServeur.getInetAddress());
-        	System.out.println("Le serveur est pret a l'écoute sur le port : "+socketServeur.getLocalPort());
-        	
+        	System.out.println("Le serveur est pret ");        	
         	while (true) {
 			socketService = socketServeur.accept();			
     			System.out.println("La connexion est accpetée pour "+socketService.getInetAddress());

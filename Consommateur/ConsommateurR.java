@@ -19,7 +19,7 @@ public class ConsommateurR {
     
     
     public ConsommateurR(){
-    	String temp="192.168.2.3";
+    	String temp="192.168.0.15";
     	try {
 		dest= InetAddress.getLocalHost();
 	} catch (UnknownHostException e) {
@@ -31,7 +31,6 @@ public class ConsommateurR {
     public void reception(){
     	try {
 			String rep=in.readLine();
-			//String hote=(String)socket.getRemoteSocketAddress();
 			ConsommateurS.surReceptionDe(rep);//reste comment faire l'adresse de l'emetteur afaire
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -42,7 +41,12 @@ public class ConsommateurR {
 			in.close();
 			out.close();
 	    	socket.close();
+	
 	    	System.out.println("Fin de connexion avec le serveur");
+		for(int i=0;i<50;i++){
+			System.out.print("-");
+		}
+		System.out.println("-");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

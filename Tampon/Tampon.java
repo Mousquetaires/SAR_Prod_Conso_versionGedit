@@ -1,7 +1,7 @@
 
 public class Tampon {   
     public String id;
-    public String [] tabMess = new String[50];  
+    public String [] tabMess = new String[1];  
     public int nbMess = 0;
     public int outC = 0;   
     public int inP = 0;
@@ -13,11 +13,11 @@ public class Tampon {
     
     public boolean autorisation(String producteur,ThreadTampon servv) {    	
     	if(nbMess<tabMess.length){
-    		servv.envoyerA(producteur, ack);
+    		servv.envoyerA(ack);
     		servv.receptionP();
     		return true;
     	}else{
-    		servv.envoyerA(producteur, refus);
+    		servv.envoyerA(refus);
     		return false;
     	}
     }
@@ -26,10 +26,11 @@ public class Tampon {
        	if(!(msg.equals(req))){
     		System.out.println("le message reçu est : "+msg);
     		tabMess[inP] = msg;
-    		int tmp = inP;
+    		System.out.println("ET sa position dans le Tampon est le numéro :"+inP);
     		inP = (inP+1)%tabMess.length;    		
     		nbMess++;
-    		System.out.println(tabMess[tmp]+" est le numero : "+nbMess+ " dans le tampon");
+		System.out.println("Le nombre de message est de: "+nbMess);
+    		
     	}else{
     		this.autorisation(producteur,se);
     	}
@@ -41,9 +42,10 @@ public class Tampon {
     		System.out.println("le message envoyé est : "+msg);
     		outC = (outC+1)%tabMess.length;
     		nbMess--;
-    		se.envoyerA(consommateur, msg);
+		System.out.println("Le nombre de message est de "+nbMess+" maintenant");
+    		se.envoyerA(msg);
     	}else{
-    		se.envoyerA(consommateur, refus);
+    		se.envoyerA(refus);
     		System.out.println("Bonjour mon conso, y'a pas de bouffe ce soir ! :)");
     	}
     }
